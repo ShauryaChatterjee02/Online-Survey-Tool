@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Selection</title>
+  <style>
+    body {
+      background-image: url('nature.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container3">
+    <h1>Online Survey Form</h1>
+    <div class="home">
+    <h2>Select The Template</h2>
+
+    <button onclick="selectTemplate('survey1.html')">Template 1</button>
+    <button onclick="selectTemplate('survey2.html')">Template 2</button>
+
+    <script>
+      function selectTemplate(template) {
+        window.location.href = template;
+      }
+    </script>
+  </div>
+</body>
+</html>

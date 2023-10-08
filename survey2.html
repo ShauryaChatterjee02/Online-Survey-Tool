@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Survey Form</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-image: url('nature.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      
+    }
+    
+    header {
+      background-color: #4CAF50; 
+      color: white; 
+      padding: 10px; 
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white; 
+      margin: 0 20px; 
+      text-decoration: none;
+    }
+
+   
+    .question {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      padding: 10px;
+    }
+
+  
+    .button-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .button-container button {
+      margin: 5px;
+    }
+
+    .options-container {
+      margin-left: 20px;
+    }
+
+    .option {
+      margin-bottom: 10px;
+    }
+
+    .option label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .option textarea {
+      width: 80%; 
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <div class="container3">
+    <h1>Online Survey Form with MCQs</h1>
+
+  
+    <div class="survey">
+      <h2>Insert Questions and MCQ Options</h2>
+      <form id="questions" method="POST" action="save_answers_mcq.php">
+
+
+
+        <div class="question" id="question1">
+          <label for="Question1">Question 1:</label>
+          <input type="text" id="Question1" name="Question1" placeholder="Enter your question">
+
+          <div class="options-container">
+            <div class="option">
+              <label for="Option1_1">Option 1:</label>
+              <textarea id="Option1_1" name="Option1_1" placeholder="Enter option"></textarea>
+              <input type="radio" name="CorrectOption1" value="Option 1">
+            </div>
+            <div class="option">
+              <label for="Option1_2">Option 2:</label>
+              <textarea id="Option1_2" name="Option1_2" placeholder="Enter option"></textarea>
+              <input type="radio" name="CorrectOption1" value="Option 2">
+            </div>
+          </div>
+        </div>
+        
+  
+        <div class="button-container">
+          <button type="button" onclick="addQuestion()">Add Question</button>
+          <button type="button" onclick="addOption()">Add Option</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+
+  <script>
+    let questionNumber = 1; 
+
+    function addQuestion() {
+      questionNumber++;
+
+      const newQuestionDiv = document.createElement('div');
+      newQuestionDiv.classList.add('question');
+      newQuestionDiv.id = `question${questionNumber}`;
+      newQuestionDiv.innerHTML = `
+        <label for="Question${questionNumber}">Question ${questionNumber}:</label>
+        <input type="text" id="Question${questionNumber}" name="Question${questionNumber}" placeholder="Enter your question">
+        <div class="options-container">
+          <div class="option">
+            <label for="Option${questionNumber}_1">Option 1:</label>
+            <textarea id="Option${questionNumber}_1" name="Option${questionNumber}_1" placeholder="Enter option"></textarea>
+            <input type="radio" name="CorrectOption${questionNumber}" value="Option 1">
+          </div>
+          <div class="option">
+            <label for="Option${questionNumber}_2">Option 2:</label>
+            <textarea id="Option${questionNumber}_2" name="Option${questionNumber}_2" placeholder="Enter option"></textarea>
+            <input type="radio" name="CorrectOption${questionNumber}" value="Option 2">
+          </div>
+        </div>
+      `;
+
+    
+      const lastQuestion = document.getElementById(`question${questionNumber - 1}`);
+      lastQuestion.insertAdjacentElement('afterend', newQuestionDiv);
+    }
+
+    function addOption() {
+      const currentQuestion = document.getElementById(`question${questionNumber}`);
+      if (currentQuestion) {
+        const optionsContainer = currentQuestion.querySelector('.options-container');
+        const optionNumber = optionsContainer.getElementsByClassName('option').length + 1;
+
+        const newOption = document.createElement('div');
+        newOption.classList.add('option');
+        newOption.innerHTML = `
+          <label for="Option${questionNumber}_${optionNumber}">Option ${optionNumber}:</label>
+          <textarea id="Option${questionNumber}_${optionNumber}" name="Option${questionNumber}_${optionNumber}" placeholder="Enter option"></textarea>
+          <input type="radio" name="CorrectOption${questionNumber}" value="Option ${optionNumber}">
+        `;
+
+        optionsContainer.appendChild(newOption);
+      }
+    }
+  </script>
+</body>
+</html>

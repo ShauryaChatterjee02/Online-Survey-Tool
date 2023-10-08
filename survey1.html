@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Survey Form</title>
+  <style>
+   
+
+    body {
+      background-image: url('nature.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+     
+    }
+    .container1 {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 50px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      margin-bottom: 10px;
+      resize: none;
+    }
+    
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    .signin {
+      margin-bottom: 20px;
+    }
+    
+    .survey {
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+
+    
+    header {
+      background-color: #4CAF50; 
+      color: white; 
+      padding: 10px; 
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white; 
+      margin: 0 20px; 
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <div class="container1">
+    <h1>Online Survey Form</h1>
+
+  
+    <div class="survey">
+      <h2>Insert Questions</h2>
+      <form id="questionsForm" action="save_answers.php" method="post">
+     
+        <div id="question-answer-container"></div>
+
+        
+        <button type="button" onclick="addQuestion()">Add Question</button>
+
+       
+        <button type="submit" name="submit" id="submitBtn">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      function addQuestion() {
+        const questionAnswerContainer = document.getElementById('question-answer-container');
+
+        const newQuestionDiv = document.createElement('div');
+        newQuestionDiv.classList.add('question-answer');
+
+        newQuestionDiv.innerHTML = `
+          <label for="questions[]">Question:</label>
+          <input type="text" name="questions[]" placeholder="Enter your question">
+          <br>
+          <label for="answers[]">Answer:</label>
+          <textarea name="answers[]" placeholder="Write your answer for this question"></textarea>
+          <br>
+        `;
+
+        questionAnswerContainer.appendChild(newQuestionDiv);
+      }
+    </script>
+  </div>
+</body>
+</html>
