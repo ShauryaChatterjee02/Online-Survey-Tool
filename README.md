@@ -5,7 +5,7 @@
 Brief description: This PDF contains the PowerPoint presentation (PPT) for the Online Survey Tool project.
 
 ## Project Report
-[project report.pdf](https://github.com/ShauryaChatterjee02/Online-Survey-Tool/files/12918637/project.report.pdf)
+[Project Report.pdf](https://github.com/ShauryaChatterjee02/Online-Survey-Tool/files/12919989/Project.Report.pdf)
 Brief description: The project report PDF provides a comprehensive overview and details about the Online Survey Tool project.
 
 ## Demo Video
